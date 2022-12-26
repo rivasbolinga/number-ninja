@@ -1,0 +1,37 @@
+
+
+.calculadora {
+  margin-top: 100px;
+  margin-left: 100px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: white;
+  border: 2px solid orange;
+}
+
+.display {
+  height: 80px;
+  display: flex;
+  font-size: 30px;
+  justify-content: end;
+}
+.operations {
+  display: flex;
+  flex-direction: column;
+}
+.numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.buttons {
+  display: flex;
+}
+
+button {
+  width: 100px;
+  height: 40px;
+
+}
