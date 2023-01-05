@@ -1,6 +1,7 @@
 'use strict'
 
-const display = document.querySelector('.display');
+const currentOperation = document.querySelector('.current-operand');
+const previousOperation = document.querySelector('.previous-operand');
 const numbers= document.querySelectorAll('.number');
 const operations = document.querySelectorAll('.ope');
 const sum = document.querySelector('.sum');
@@ -9,81 +10,84 @@ const resetBtn = document.querySelector('.clear');
 
 let displaValue = "";
 let prevNum = "";
-let secondNum = "";
-let operator = "";
+let currNum = "";
+let currOperator = null;
+// set number
 
-//display numbers
-numbers.forEach(function(e){
-  e.addEventListener('click',function(e){
-    if(operator === ""){
-      prevNum += e.target.textContent;
-      display.textContent = prevNum;
-      console.log(prevNum);
-  } else {
-    secondNum += e.target.textContent;
-    display.textContent += secondNum;
-    console.log(secondNum);
+const setNumber = function(num) {
+  if(num === '.' && currNum.includes('.')) return
+    currNum = currNum.toString() + num.toString();
+}
+
+
+const setOperation = function (operator){
+  if(currNum === "") return
+  if(prevNum !== "") {
+    compute(operator);
   }
-})
-})
+ operator = operator;
+ prevNum = currNum;
+ currNum = "";
+}
+
+
 
 // display operations
 
-operations.forEach(function(op) {
-  op.addEventListener('click', function (e) {
-    operator = e.target.textContent
-    display.textContent += operator;
-  })
-  return operator;
-})
+
+
+const compute = function() {
+  let computation;
+  const prev = parseFloat(prevNum);
+  const curr = parseFloat(currNum);
+  if (isNaN(prev) || isNaN(curr)) return;
+  switch(operator) {
+    case '+':
+      computation = prev + curr;
+      break
+    case '-':
+      computation = prev - curr;
+        break
+    case 'x':
+      computation = prev * curr;
+        break
+    case '/':
+      computation = prev / curr;
+        break
+    default:
+      return
+  }
+  
+  currNum = computation;
+
+  prevNum = "";
+ 
+}
+
+//update display
+const updateDisplay = function() {
+  currentOperation.textContent = currNum;
+  previousOperation.textContent = prevNum;
+}
+
 
 // equal button
 
-equalBtn.addEventListener('click', function (e){
-switch(operator) {
-  case "+":
-    add(prevNum, secondNum);
-    break;
-  case "-":
-    substract(prevNum, secondNum);
-    break;
-  case "x":
-    multip(prevNum, secondNum);
-    break;
-  case "/":
-    division(prevNum, secondNum);
-    break;
-  default:
-    break;
-}
+equalBtn.addEventListener('click', button => {
+  compute();
 })
-//operations
 
-const add = function(a,b){
-   const result = (parseInt(a)+ parseInt(b));
-   display.textContent = result;
-}
+//display numbers
+numbers.forEach(function(button) {
+  button.addEventListener('click',() => {
+    setNumber(button.textContent);
+    updateDisplay();
+  })
+});
 
-const substract = function(a,b){
-  const result = (parseInt(a)- parseInt(b));
-  display.textContent = result;
-}
-
-const division = function(a,b){
-  const result = (parseInt(a) / parseInt(b));
-  display.textContent = result;
-}
-const multip = function(a,b){
-  const result = (parseInt(a) * parseInt(b));
-   display.textContent = result;
-}
-
-// clear
-
-resetBtn.addEventListener('click', function() {
-  display.textContent = 0;
-  displaValue = "";
-  prevNum = "";
-  secondNum = "";
-  operator = "";
-})
+operations.forEach(function(button) {
+  button.addEventListener('click', () => {
+    setOperation(button.textContent);
+    updateDisplay();
+  })
+});

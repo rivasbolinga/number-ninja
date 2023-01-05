@@ -9,7 +9,16 @@
 </head>
 <body>
 <div class="calculadora">
-  <div class="display">00</div>
+  <div class="display-screen">
+    <div class="previous-operand">
+    </div>
+    <div class="current-operand">0</div>
+  </div>
+  <div class="all-btns">
+  <div class="delete-btns">
+    <button class="delete delet">Delete</button>
+    <button class="delete clear">Clear</button>
+  </div>
   <div class="buttons">
     <div class="numbers">
     <button class="number seven">7</button>
@@ -21,8 +30,8 @@
     <button class="number one">1</button>
     <button class="number two">2</button>
     <button class="number three">3</button>
+    <button class="number dot">.</button>
     <button class="number zero">0</button>
-    <button class="clear">C</button>
     <button class="equal">=</button>
     </div>
     <div class="operations">
@@ -31,6 +40,7 @@
        <button class="ope por">x</button>
        <button class="ope divide">/</button>
     </div>
+</div>
 </div>
 </div>
 <script src="main.js"></script>
