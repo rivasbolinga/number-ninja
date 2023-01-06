@@ -7,33 +7,18 @@ const operations = document.querySelectorAll('.ope');
 const sum = document.querySelector('.sum');
 const equalBtn = document.querySelector('.equal');
 const resetBtn = document.querySelector('.clear');
+const deleteBtn = document.querySelector('.delet');
 
-let displaValue = "";
+
 let prevNum = "";
-let currNum = "";
+let secondNum = "";
 let currOperator = null;
-// set number
-
-const setNumber = function(num) {
-  if(num === '.' && currNum.includes('.')) return
-    currNum = currNum.toString() + num.toString();
-}
 
 
-const setOperation = function (operator){
-  if(currNum === "") return
-  if(prevNum !== "") {
-    evaluate();
-  }
- prevNum = currentOperation.textContent;
- currOperator = operator;
- 
- previousOperation.textContent = `${prevNum} ${currentOperation}`
-}
-
+// Operations functions
 
 function add(a, b) {
-  return a + b
+  return (a + b);
 }
 
 function substract(a, b) {
@@ -48,54 +33,94 @@ function division(a, b) {
   return a / b
 }
 
-const evaluate = function(){
-  currNum = currOperator.textContent
-  currOperator.textContent = compute(currOperator,prevNum, currNum);
-  previousOperation.textContent = `${prevNum} ${currOperator}${currNum}`
-}
+ const evaluate = function(){
+  if( currOperator === null) return
+  if (currOperator === '/' && currentOperation.textContent === "0"){
+    currOperator.textContent = 'null'
+    return
+  }
+  secondNum = currentOperation.textContent;
+  currentOperation.textContent = compute(currOperator, prevNum, secondNum);
+  previousOperation.textContent = `${prevNum} ${currOperator} ${secondNum}`
+  currOperator = null
+  }
 
 
-
-const compute = function(operator,prev,curr) {
-   prev = parseFloat(prev);
-   curr = parseFloat(curr);
-  if (isNaN(prev) || isNaN(curr)) return;
+const compute = function(operator,a,b) {
+   a = Number(a);
+   b = Number(b);
+  //if (isNaN(prev) || isNaN(curr)) return;
   switch(operator) {
     case '+':
-     return add(prev, curr)
-     
+     add(a, b)
     case '-':
-      return substract(prev,curr)
+      return substract(a,b)
     case 'x':
-      return multply(prev,curr)
+      return multiply(a,b)
     case '/':
-      return division(prev,curr)
+      return division(a,b)
     default:
-      return 
+      return null
   }
- 
 }
 
-//update display
+const resetScreen = function () {
+  currentOperation.textContent = "";
+}
+
+//Function to set the number
+const setNumber = function(num){
+  if(currentOperation.textContent === '0')
+  resetScreen();
+  currentOperation.textContent += num;
+  if (currentOperation.textContent.includes('.')) return
+}
+
+//Function to set the operation
+ const setOperation = function (operator) {
+  if (currOperator !== null) evaluate();
+  prevNum = currentOperation.textContent;
+  currOperator = operator;
+  previousOperation.textContent = `${prevNum} ${currOperator}`
+  resetScreen();
+ }
+
+//delete a number
+const deleteNum = function(){
+  currentOperation.textContent = currentOperation.textContent.toString().slice(0,-1);
+}
+// clear 
+const clear = function() {
+   prevNum = "";
+   secondNum = "";
+   currOperator = null;
+   currentOperation.textContent = "0";
+   previousOperation.textContent = ""
+}
 
 
-//EVENT LISTENRES
+/////// EVENT LISTENERS
+
+// Event listeners for number buttons
+
+ numbers.forEach(function(button) {
+   button.addEventListener('click',() => {
+     setNumber(button.textContent);
+   }) 
+  });
+
+// Event listener for Operation buttons
+
+operations.forEach(function(button) {
+    button.addEventListener('click', () => {
+    setOperation(button.textContent);
+    });
+  });
 
 // equal button
 
-equalBtn.addEventListener('click', evaluate);
+ equalBtn.addEventListener('click', evaluate);
 
-//display numbers
-numbers.forEach(function(button) {
-  button.addEventListener('click',() => {
-    setNumber(button.textContent);
-  
-  })
-});
-
-operations.forEach(function(button) {
-  button.addEventListener('click', () => {
-    setOperation(button.textContent);
-   
-  })
-});
+resetBtn.addEventListener('click', clear);
+deleteBtn.addEventListener('click', deleteNum);
+// dotBtn.addEventListener('click', appendDot)
