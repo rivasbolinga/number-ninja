@@ -2,7 +2,8 @@
 
 # Rock Paper Scissors
 
-Project of a simple calculator from The Odin Project Curriculum made with plain JS, and HTML and CSS for the style. 
+Project of a simple calculator from The Odin Project Curriculum using the material I have learned in "fundamentas of Javascript Course".
+
 Use of simple functions for the functionality of the calculator. 
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -15,7 +16,9 @@ Use of simple functions for the functionality of the calculator.
 
 
 - **[Totally responsive]**
-- **[All basic operations]**
+- **[All basic operations: add, substract, multiply and divide]**
+- **[Able to string together different operations]**
+- **[Rounded solution to evoid long decilmals]**
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
