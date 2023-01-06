@@ -23,71 +23,79 @@ const setNumber = function(num) {
 const setOperation = function (operator){
   if(currNum === "") return
   if(prevNum !== "") {
-    compute(operator);
+    evaluate();
   }
- operator = operator;
- prevNum = currNum;
- currNum = "";
+ prevNum = currentOperation.textContent;
+ currOperator = operator;
+ 
+ previousOperation.textContent = `${prevNum} ${currentOperation}`
+}
+
+
+function add(a, b) {
+  return a + b
+}
+
+function substract(a, b) {
+  return a - b
+}
+
+function multiply(a, b) {
+  return a * b
+}
+
+function division(a, b) {
+  return a / b
+}
+
+const evaluate = function(){
+  currNum = currOperator.textContent
+  currOperator.textContent = compute(currOperator,prevNum, currNum);
+  previousOperation.textContent = `${prevNum} ${currOperator}${currNum}`
 }
 
 
 
-// display operations
-
-
-
-const compute = function() {
-  let computation;
-  const prev = parseFloat(prevNum);
-  const curr = parseFloat(currNum);
+const compute = function(operator,prev,curr) {
+   prev = parseFloat(prev);
+   curr = parseFloat(curr);
   if (isNaN(prev) || isNaN(curr)) return;
   switch(operator) {
     case '+':
-      computation = prev + curr;
-      break
+     return add(prev, curr)
+     
     case '-':
-      computation = prev - curr;
-        break
+      return substract(prev,curr)
     case 'x':
-      computation = prev * curr;
-        break
+      return multply(prev,curr)
     case '/':
-      computation = prev / curr;
-        break
+      return division(prev,curr)
     default:
-      return
+      return 
   }
-  
-  currNum = computation;
-
-  prevNum = "";
  
 }
 
 //update display
-const updateDisplay = function() {
-  currentOperation.textContent = currNum;
-  previousOperation.textContent = prevNum;
-}
 
+
+//EVENT LISTENRES
 
 // equal button
 
-equalBtn.addEventListener('click', button => {
-  compute();
-})
+equalBtn.addEventListener('click', evaluate);
 
 //display numbers
 numbers.forEach(function(button) {
   button.addEventListener('click',() => {
     setNumber(button.textContent);
-    updateDisplay();
+  
   })
 });
 
 operations.forEach(function(button) {
   button.addEventListener('click', () => {
     setOperation(button.textContent);
-    updateDisplay();
+   
   })
 });
