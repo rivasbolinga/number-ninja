@@ -40,11 +40,14 @@ function division(a, b) {
     return
   }
   secondNum = currentOperation.textContent;
-  currentOperation.textContent = compute(currOperator, prevNum, secondNum);
+  currentOperation.textContent = roundResult(compute(currOperator, prevNum, secondNum));
   previousOperation.textContent = `${prevNum} ${currOperator} ${secondNum}`
   currOperator = null
   }
 
+  function roundResult(number) {
+    return Math.round(number * 1000) / 1000
+  }
 
 const compute = function(operator,a,b) {
    a = Number(a);
@@ -52,7 +55,7 @@ const compute = function(operator,a,b) {
   //if (isNaN(prev) || isNaN(curr)) return;
   switch(operator) {
     case '+':
-     add(a, b)
+     return add(a, b)
     case '-':
       return substract(a,b)
     case 'x':
@@ -68,16 +71,31 @@ const resetScreen = function () {
   currentOperation.textContent = "";
 }
 
+const appendDot = function() {
+  if (currentOperation.textContent === ''){
+    currentOperation.textContent = '0'
+  }
+  if (currentOperation.textContent.includes('.')) return
+  currentOperation.textContent += '.';
+}
+
 //Function to set the number
 const setNumber = function(num){
-  if(currentOperation.textContent === '0')
-  resetScreen();
-  currentOperation.textContent += num;
-  if (currentOperation.textContent.includes('.')) return
+  if(num === '.'){
+    appendDot();
+  } else {
+    if(currentOperation.textContent === '0')
+    resetScreen();
+    currentOperation.textContent += num;
+  }
+ 
 }
 
 //Function to set the operation
  const setOperation = function (operator) {
+  if(previousOperation.textContent.includes(operator)){
+    evaluate()
+  }
   if (currOperator !== null) evaluate();
   prevNum = currentOperation.textContent;
   currOperator = operator;
@@ -86,10 +104,12 @@ const setNumber = function(num){
  }
 
 //delete a number
+
 const deleteNum = function(){
   currentOperation.textContent = currentOperation.textContent.toString().slice(0,-1);
 }
-// clear 
+
+// clear everything
 const clear = function() {
    prevNum = "";
    secondNum = "";
@@ -97,7 +117,6 @@ const clear = function() {
    currentOperation.textContent = "0";
    previousOperation.textContent = ""
 }
-
 
 /////// EVENT LISTENERS
 
@@ -117,10 +136,6 @@ operations.forEach(function(button) {
     });
   });
 
-// equal button
-
- equalBtn.addEventListener('click', evaluate);
-
+equalBtn.addEventListener('click', evaluate);
 resetBtn.addEventListener('click', clear);
 deleteBtn.addEventListener('click', deleteNum);
-// dotBtn.addEventListener('click', appendDot)
