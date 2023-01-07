@@ -1,6 +1,5 @@
-# Calculadora
+# Calculator
 
-# Rock Paper Scissors
 
 Project of a simple calculator from The Odin Project Curriculum using the material I have learned in "fundamentas of Javascript Course".
 
@@ -24,4 +23,4 @@ Use of simple functions for the functionality of the calculator.
 
 > Here you can see the live demo of the website:
 
-- [Live Demo Link](https://rivasbolinga.github.io/RockPaperScissors/)
+- [Live Demo Link](https://rivasbolinga.github.io/Calculadora/)

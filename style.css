@@ -1,5 +1,4 @@
 
-
 .calculadora {
   margin-top: 100px;
   margin-left: 200px;
@@ -86,7 +85,7 @@ button {
   flex-direction: column;
   justify-content: end;
   align-items: flex-end;
-  gap: 20px
+  gap: 20px;
 }
 
 .previous-operand {
@@ -94,7 +93,7 @@ button {
 }
 
 .current-operand {
-  font-size: 55px; 
+  font-size: 55px;
 }
 
 footer {
@@ -108,8 +107,7 @@ footer {
   font-family: 'Roboto', sans-serif;
 }
 
-@media only screen and (max-width: 768px){
-  
+@media only screen and (max-width: 768px) {
   .calculadora {
     width: 280px;
     margin-left: 20px;
@@ -144,8 +142,8 @@ footer {
   .previous-operand {
     font-size: 20px;
   }
-  
+
   .current-operand {
     font-size: 55px;
-}
+  }
 }
