@@ -1,8 +1,7 @@
 
-
 .calculadora {
   margin-top: 100px;
-  margin-left: 100px;
+  margin-left: 200px;
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -18,12 +17,14 @@
   font-size: 30px;
   justify-content: end;
 }
+
 .operations {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-left: 10px;
 }
+
 .numbers {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -42,7 +43,6 @@ button {
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
   border-radius: 20px;
-
 }
 
 .delete-btns {
@@ -85,15 +85,65 @@ button {
   flex-direction: column;
   justify-content: end;
   align-items: flex-end;
-  gap: 20px
+  gap: 20px;
 }
 
 .previous-operand {
   font-size: 30px;
-  
 }
 
 .current-operand {
   font-size: 55px;
- 
+}
+
+footer {
+  margin-top: 20px;
+  background-color: rgb(35, 54, 71);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  font-family: 'Roboto', sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+  .calculadora {
+    width: 280px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .display-screen {
+    width: 240px;
+    height: 110px;
+  }
+
+  button {
+    width: 53px;
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  .delete {
+    width: 117px;
+    height: 60px;
+  }
+
+  .delete-btns {
+    gap: 10px;
+  }
+
+  .previous-operand {
+    font-size: 20px;
+  }
+
+  .current-operand {
+    font-size: 55px;
+  }
 }

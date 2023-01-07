@@ -1,101 +1,138 @@
-'use strict'
-
 const currentOperation = document.querySelector('.current-operand');
 const previousOperation = document.querySelector('.previous-operand');
-const numbers= document.querySelectorAll('.number');
+const numbers = document.querySelectorAll('.number');
 const operations = document.querySelectorAll('.ope');
-const sum = document.querySelector('.sum');
 const equalBtn = document.querySelector('.equal');
 const resetBtn = document.querySelector('.clear');
+const deleteBtn = document.querySelector('.delet');
 
-let displaValue = "";
-let prevNum = "";
-let currNum = "";
+let prevNum = '';
+let secondNum = '';
 let currOperator = null;
-// set number
 
-const setNumber = function(num) {
-  if(num === '.' && currNum.includes('.')) return
-    currNum = currNum.toString() + num.toString();
-}
-
-
-const setOperation = function (operator){
-  if(currNum === "") return
-  if(prevNum !== "") {
-    evaluate();
-  }
- prevNum = currentOperation.textContent;
- currOperator = operator;
- 
- previousOperation.textContent = `${prevNum} ${currentOperation}`
-}
-
+// Operations functions
 
 function add(a, b) {
-  return a + b
+  return (a + b);
 }
 
 function substract(a, b) {
-  return a - b
+  return a - b;
 }
 
 function multiply(a, b) {
-  return a * b
+  return a * b;
 }
 
 function division(a, b) {
-  return a / b
+  return a / b;
 }
 
-const evaluate = function(){
-  currNum = currOperator.textContent
-  currOperator.textContent = compute(currOperator,prevNum, currNum);
-  previousOperation.textContent = `${prevNum} ${currOperator}${currNum}`
+// Round big decimals
+
+function roundResult(number) {
+  return Math.round(number * 1000) / 1000;
 }
 
-
-
-const compute = function(operator,prev,curr) {
-   prev = parseFloat(prev);
-   curr = parseFloat(curr);
-  if (isNaN(prev) || isNaN(curr)) return;
-  switch(operator) {
+const compute = function (operator, a, b) {
+  a = Number(a);
+  b = Number(b);
+  // if (isNaN(prev) || isNaN(curr)) return;
+  switch (operator) {
     case '+':
-     return add(prev, curr)
-     
+      return add(a, b);
     case '-':
-      return substract(prev,curr)
+      return substract(a, b);
     case 'x':
-      return multply(prev,curr)
+      return multiply(a, b);
     case '/':
-      return division(prev,curr)
+      return division(a, b);
     default:
-      return 
+      return null;
   }
- 
-}
+};
 
-//update display
+// Evaluate function
 
+const evaluate = function () {
+  if (currOperator === null) return;
+  if (currOperator === '/' && currentOperation.textContent === '0') {
+    currOperator.textContent = 'null';
+    return;
+  }
+  secondNum = currentOperation.textContent;
+  currentOperation.textContent = roundResult(compute(currOperator, prevNum, secondNum));
+  previousOperation.textContent = `${prevNum} ${currOperator} ${secondNum}`;
+  currOperator = null;
+};
 
-//EVENT LISTENRES
+const resetScreen = function () {
+  currentOperation.textContent = '';
+};
 
-// equal button
+const appendDot = function () {
+  if (currentOperation.textContent === '') {
+    currentOperation.textContent = '0';
+  }
+  if (currentOperation.textContent.includes('.')) return;
+  currentOperation.textContent += '.';
+};
 
-equalBtn.addEventListener('click', evaluate);
+// Function to set the number
+const setNumber = function (num) {
+  if (num === '.') {
+    appendDot();
+  } else {
+    if (currentOperation.textContent === '0') resetScreen();
+    currentOperation.textContent += num;
+  }
+};
 
-//display numbers
-numbers.forEach(function(button) {
-  button.addEventListener('click',() => {
+// Function to set the operation
+const setOperation = function (operator) {
+  if (previousOperation.textContent.includes(operator)) {
+    evaluate();
+  }
+  if (currOperator !== null) evaluate();
+  prevNum = currentOperation.textContent;
+  currOperator = operator;
+  previousOperation.textContent = `${prevNum} ${currOperator}`;
+  resetScreen();
+};
+
+// delete a number
+
+const deleteNum = function () {
+  currentOperation.textContent = currentOperation.textContent.toString().slice(0, -1);
+};
+
+// clear everything
+const clear = function () {
+  prevNum = '';
+  secondNum = '';
+  currOperator = null;
+  currentOperation.textContent = '0';
+  previousOperation.textContent = '';
+};
+
+/// //// EVENT LISTENERS
+
+// Event listeners for number buttons
+
+numbers.forEach((button) => {
+  button.addEventListener('click', () => {
     setNumber(button.textContent);
-  
-  })
+  });
 });
 
-operations.forEach(function(button) {
+// Event listener for Operation buttons
+
+operations.forEach((button) => {
   button.addEventListener('click', () => {
     setOperation(button.textContent);
-   
-  })
+  });
 });
+
+equalBtn.addEventListener('click', evaluate);
+resetBtn.addEventListener('click', clear);
+deleteBtn.addEventListener('click', deleteNum);
