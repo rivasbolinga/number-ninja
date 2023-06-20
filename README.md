@@ -1,7 +1,7 @@
 
 ![Minimalist Neutral Multi Device Computer Mockup Website Launch Instagram Post (4)](https://github.com/rivasbolinga/number-ninja/assets/103900838/88d3f894-eaea-49c0-9bdb-77fc2830be81)
 
-#Number Ninja
+# Number Ninja
 
 Number ninja is a website built with vanilla JavaScript features a calculator that provides basic arithmetic operations. The user interface consists of a responsive layout with a display screen and buttons for numbers (0-9) and operators (+, -, *, /). JavaScript handles the logic behind the calculator's functionality, such as capturing button clicks, updating the display, and performing calculations. The calculator efficiently evaluates expressions and delivers accurate results instantly. The design is clean and intuitive, allowing users to easily input numbers and perform calculations. This simple yet effective calculator website demonstrates the power and versatility of JavaScript in creating interactive web applications.
 Project of a simple calculator from The Odin Project Curriculum using the material I have learned in "fundamentals of Javascript Course".
