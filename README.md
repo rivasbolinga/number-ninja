@@ -33,7 +33,7 @@ Use of simple functions for the functionality of the calculator.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [Issues](https://github.com/rivasbolinga/my-portfolio/issues).
+Feel free to check the [Issues](https://github.com/rivasbolinga/Calculadora/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
