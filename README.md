@@ -1,6 +1,6 @@
-# Calculator
+# Number Ninja
 
-The website built with vanilla JavaScript features a calculator that provides basic arithmetic operations. The user interface consists of a responsive layout with a display screen and buttons for numbers (0-9) and operators (+, -, *, /). JavaScript handles the logic behind the calculator's functionality, such as capturing button clicks, updating the display, and performing calculations. The calculator efficiently evaluates expressions and delivers accurate results instantly. The design is clean and intuitive, allowing users to easily input numbers and perform calculations. This simple yet effective calculator website demonstrates the power and versatility of JavaScript in creating interactive web applications.
+Number ninja is a website built with vanilla JavaScript features a calculator that provides basic arithmetic operations. The user interface consists of a responsive layout with a display screen and buttons for numbers (0-9) and operators (+, -, *, /). JavaScript handles the logic behind the calculator's functionality, such as capturing button clicks, updating the display, and performing calculations. The calculator efficiently evaluates expressions and delivers accurate results instantly. The design is clean and intuitive, allowing users to easily input numbers and perform calculations. This simple yet effective calculator website demonstrates the power and versatility of JavaScript in creating interactive web applications.
 Project of a simple calculator from The Odin Project Curriculum using the material I have learned in "fundamentals of Javascript Course".
 
 Use of simple functions for the functionality of the calculator. 
@@ -15,14 +15,14 @@ Use of simple functions for the functionality of the calculator.
 
 
 - **Totally responsive**
-- **All basic operations: add, subtract, multiply and divide**
+- **All basic operations: add, subtract, multiply, and divide**
 - **Able to string together different operations**
-- **Rounded solution to avoid long decilmals**
+- **Rounded solution to avoid long decimals**
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 
-- [Live Demo Link](https://rivasbolinga.github.io/Calculadora/)
+- [Live Demo Link](https://rivasbolinga.github.io/number-ninja/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -33,7 +33,7 @@ Use of simple functions for the functionality of the calculator.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [Issues](https://github.com/rivasbolinga/Calculadora/issues).
+Feel free to check the [Issues](https://github.com/rivasbolinga/number-ninja/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
