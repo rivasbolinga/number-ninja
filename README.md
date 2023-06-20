@@ -21,6 +21,27 @@ Use of simple functions for the functionality of the calculator.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Here you can see the live demo of the website:
 
 - [Live Demo Link](https://rivasbolinga.github.io/Calculadora/)
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [Issues](https://github.com/rivasbolinga/my-portfolio/issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
+## ⭐️ Show your support <a name="support"></a>
+
+If you like this project, please don't forget to follow us and give it a star.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
