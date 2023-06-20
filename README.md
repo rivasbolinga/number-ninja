@@ -1,7 +1,7 @@
 # Calculator
 
-
-Project of a simple calculator from The Odin Project Curriculum using the material I have learned in "fundamentas of Javascript Course".
+The website built with vanilla JavaScript features a calculator that provides basic arithmetic operations. The user interface consists of a responsive layout with a display screen and buttons for numbers (0-9) and operators (+, -, *, /). JavaScript handles the logic behind the calculator's functionality, such as capturing button clicks, updating the display, and performing calculations. The calculator efficiently evaluates expressions and delivers accurate results instantly. The design is clean and intuitive, allowing users to easily input numbers and perform calculations. This simple yet effective calculator website demonstrates the power and versatility of JavaScript in creating interactive web applications.
+Project of a simple calculator from The Odin Project Curriculum using the material I have learned in "fundamentals of Javascript Course".
 
 Use of simple functions for the functionality of the calculator. 
 
@@ -14,10 +14,10 @@ Use of simple functions for the functionality of the calculator.
 ### Key Features <a name="key-features"></a>
 
 
-- **[Totally responsive]**
-- **[All basic operations: add, substract, multiply and divide]**
-- **[Able to string together different operations]**
-- **[Rounded solution to evoid long decilmals]**
+- **Totally responsive**
+- **All basic operations: add, subtract, multiply and divide**
+- **Able to string together different operations**
+- **Rounded solution to avoid long decilmals**
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
